@@ -39,8 +39,8 @@
     "precommit-msg",
     "lint"
   ],
-  "main": "dist/eventemitter.cjs.js",
-  "jsnext:main": "src/eventemitter.js",
+  "main": "dist/event-emitter.cjs.js",
+  "jsnext:main": "src/event-emitter.js",
   "author": "LvChengbin",
   "license": "MIT",
   "dependencies": {
