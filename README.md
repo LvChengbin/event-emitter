@@ -8,7 +8,7 @@ An implementation of EventEmitter for browsers.
 $ npm i @lvchengbin/eventemitter --save
 ```
 
-If you want to invoke the code to browers with `<script>` tag, please use [eventemitter.js](). For old browsers not support ES5 syntax, please use [eventemitter.bc.js]().
+If you want to invoke the code to browers with `<script>` tag, please use [eventemitter.js](https://github.com/LvChengbin/eventemitter/raw/master/dist/eventemitter.js). For old browsers not support ES5 syntax, please use [eventemitter.bc.js](https://raw.githubusercontent.com/LvChengbin/eventemitter/master/dist/eventemitter.bc.js).
 
 ## Usage
 
