@@ -1,4 +1,4 @@
-import EventEmitter from '../src/eventemitter';
+import EventEmitter from '../src/event-emitter';
 
 describe( 'EventEmitter', () => {
     const em = new EventEmitter();

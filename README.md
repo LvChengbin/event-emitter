@@ -5,15 +5,15 @@ An implementation of EventEmitter for browsers.
 ## Installation
 
 ```js
-$ npm i @lvchengbin/eventemitter --save
+$ npm i @lvchengbin/event-emitter --save
 ```
 
-If you want to invoke the code to browers with `<script>` tag, please use [eventemitter.js](https://github.com/LvChengbin/eventemitter/raw/master/dist/eventemitter.js). For old browsers not support ES5 syntax, please use [eventemitter.bc.js](https://raw.githubusercontent.com/LvChengbin/eventemitter/master/dist/eventemitter.bc.js).
+If you want to invoke the code to browers with `<script>` tag, please use [event-emitter.js](https://github.com/LvChengbin/event-emitter/raw/master/dist/event-emitter.js). For old browsers not support ES5 syntax, please use [event-emitter.bc.js](https://raw.githubusercontent.com/LvChengbin/event-emitter/master/dist/event-emitter.bc.js).
 
 ## Usage
 
-````js
-import EventEmitter from '@lvchengbin/eventemitter';
+```js
+import EventEmitter from '@lvchengbin/event-emitter';
 
 const em = new EventEmitter();
 
@@ -68,7 +68,7 @@ em.$removeListener( 'event', handler );
 
 
 ```js
-import EventEmitter from '@lvchengbin/eventemitter';
+import EventEmitter from '@lvchengbin/event-emitter';
 
 class A extends EventEmitter {
     constructor() {

@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default [ {
-    input : 'src/eventemitter.js',
+    input : 'src/event-emitter.js',
     plugins : [
         resolve( {
             module : true,
@@ -10,11 +10,11 @@ export default [ {
         } )
     ],
     output : [
-        { file : 'dist/eventemitter.cjs.js', format : 'cjs' },
-        { file : 'dist/eventemitter.js', format : 'umd', name : 'EventEmitter' }
+        { file : 'dist/event-emitter.cjs.js', format : 'cjs' },
+        { file : 'dist/event-emitter.js', format : 'umd', name : 'EventEmitter' }
     ]
 }, {
-    input : 'src/eventemitter.js',
+    input : 'src/event-emitter.js',
     plugins : [
         resolve( {
             module : true,
@@ -23,6 +23,6 @@ export default [ {
         babel()
     ],
     output : [
-        { file : 'dist/eventemitter.bc.js', format : 'umd', name : 'EventEmitter' }
+        { file : 'dist/event-emitter.bc.js', format : 'umd', name : 'EventEmitter' }
     ]
 } ];
