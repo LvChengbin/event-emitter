@@ -110,7 +110,9 @@ var EventEmitter = function () {
                 }
 
                 for (var i = 0, l = handlers.length; i < l; i += 1) {
-                    handlers[i] && handlers[i].apply(handlers, args);
+                    var _handlers$i;
+
+                    handlers[i] && (_handlers$i = handlers[i]).call.apply(_handlers$i, [this].concat(args));
                 }
                 return true;
             }

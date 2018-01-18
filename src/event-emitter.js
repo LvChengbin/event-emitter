@@ -7,25 +7,25 @@ export default class EventEmitter {
         this.__listeners = {};
     }
 
-    $alias( name, to ) {
+    alias( name, to ) {
         this[ name ] = this[ to ].bind( this );
     }
 
-    $on( evt, handler ) {
+    on( evt, handler ) {
         const listeners = this.__listeners;
         listeners[ evt ] ? listeners[ evt ].push( handler ) : ( listeners[ evt ] = [ handler ] );
         return this;
     }
 
-    $once( evt, handler ) {
+    once( evt, handler ) {
         const _handler = ( ...args ) => {
             handler.apply( this, args );
-            this.$removeListener( evt, _handler );
+            this.removeListener( evt, _handler );
         };
-        return this.$on( evt, _handler );
+        return this.on( evt, _handler );
     }
 
-    $removeListener( evt, handler ) {
+    removeListener( evt, handler ) {
         var listeners = this.__listeners,
             handlers = listeners[ evt ];
 
@@ -46,7 +46,7 @@ export default class EventEmitter {
         return this;
     }
 
-    $emit( evt, ...args ) {
+    emit( evt, ...args ) {
         const handlers = this.__listeners[ evt ];
         if( handlers ) {
             for( let i = 0, l = handlers.length; i < l; i += 1 ) {
@@ -57,7 +57,7 @@ export default class EventEmitter {
         return false;
     }
 
-    $removeAllListeners( rule ) {
+    removeAllListeners( rule ) {
         let checker;
         if( isString( rule ) ) {
             checker = name => rule === name;

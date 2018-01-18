@@ -60,7 +60,7 @@ class EventEmitter {
         const handlers = this.__listeners[ evt ];
         if( handlers ) {
             for( let i = 0, l = handlers.length; i < l; i += 1 ) {
-                handlers[ i ] && handlers[ i ]( ...args );
+                handlers[ i ] && handlers[ i ].call( this, ...args );
             }
             return true;
         }

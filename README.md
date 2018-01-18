@@ -21,9 +21,9 @@ const handler = () => {
     // some code...
 };
 
-em.$on( 'event', handler );
-em.$emit( 'event', ...args );
-em.$removeListener( 'event', handler );
+em.on( 'event', handler );
+em.emit( 'event', ...args );
+em.removeListener( 'event', handler );
 ```
 
 ```js
@@ -32,39 +32,37 @@ import EventEmitter from '@lvchengbin/event-emitter';
 class A extends EventEmitter {
     constructor() {
         super();
-        this.$alias( 'on', '$on' );
-        this.$alias( 'once', '$once' );
-        this.$alias( 'emit', '$emit' );
-        this.$alias( 'removeListener', '$removeListener' );
-        this.$alias( 'removeAllListeners', '$removeAllListeners' );
 
         this.on( 'xxx', () => {
             // some code...
         } );
     }
 }
+
+new A().on( 'msg', () => {
+} );
 ```
 
 ## Methods
 
- - **$on( evt, handler )**
+ - **on( evt, handler )**
 
     Start to listen to an event type.
 
 
- - **$once( evt, handler )**
+ - **once( evt, handler )**
 
     Start to listen to an event type only once, then the listener will be removed.
 
- - **$removeListener( evt, handler )**
+ - **removeListener( evt, handler )**
 
     Remove lister of an event type to stop listening it.
 
- - **$emit( evt, ...args )**
+ - **emit( evt, ...args )**
     
     To trigger an event
 
- - **$removeAllListeners( rule )**
+ - **removeAllListeners( rule )**
 
     To remove listeners with a rule:
     
@@ -73,14 +71,14 @@ class A extends EventEmitter {
     - if the rule is a function, to execute the function with passing an argument which is each event type, if the function returns true, all listeners of that event type will be removed.
 
     ```js
-    em.$removeAllListeners( type => {
+    em.removeAllListeners( type => {
         if( /^ss/i.test( type ) ) {
             return true;
         }
     } );
-    em.$removeAllListeners( 'click' );
-    em.$removeAllListeners( /click/i );
+    em.removeAllListeners( 'click' );
+    em.removeAllListeners( /click/i );
     ```
- - **$alias( alias, existsMethod )**
+ - **alias( alias, existsMethod )**
 
     To set alias for a existing method, for example.
