@@ -81,4 +81,13 @@ new A().on( 'msg', () => {
     ```
  - **alias( alias, existsMethod )**
 
-    To set alias for a existing method, for example.
+    To set alias for a existing method, for example:
+
+    ```js
+    class EC extends EventEmitter {
+        constructor() {
+            super();
+            this.alias( '$on', 'on' );
+        }
+    }
+    ```

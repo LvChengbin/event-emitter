@@ -52,20 +52,20 @@ var EventEmitter = function () {
     }
 
     createClass(EventEmitter, [{
-        key: '$alias',
-        value: function $alias(name, to) {
+        key: 'alias',
+        value: function alias(name, to) {
             this[name] = this[to].bind(this);
         }
     }, {
-        key: '$on',
-        value: function $on(evt, handler) {
+        key: 'on',
+        value: function on(evt, handler) {
             var listeners = this.__listeners;
             listeners[evt] ? listeners[evt].push(handler) : listeners[evt] = [handler];
             return this;
         }
     }, {
-        key: '$once',
-        value: function $once(evt, handler) {
+        key: 'once',
+        value: function once(evt, handler) {
             var _this = this;
 
             var _handler = function _handler() {
@@ -74,13 +74,13 @@ var EventEmitter = function () {
                 }
 
                 handler.apply(_this, args);
-                _this.$removeListener(evt, _handler);
+                _this.removeListener(evt, _handler);
             };
-            return this.$on(evt, _handler);
+            return this.on(evt, _handler);
         }
     }, {
-        key: '$removeListener',
-        value: function $removeListener(evt, handler) {
+        key: 'removeListener',
+        value: function removeListener(evt, handler) {
             var listeners = this.__listeners,
                 handlers = listeners[evt];
 
@@ -101,8 +101,8 @@ var EventEmitter = function () {
             return this;
         }
     }, {
-        key: '$emit',
-        value: function $emit(evt) {
+        key: 'emit',
+        value: function emit(evt) {
             var handlers = this.__listeners[evt];
             if (handlers) {
                 for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
@@ -119,8 +119,8 @@ var EventEmitter = function () {
             return false;
         }
     }, {
-        key: '$removeAllListeners',
-        value: function $removeAllListeners(rule) {
+        key: 'removeAllListeners',
+        value: function removeAllListeners(rule) {
             var checker = void 0;
             if (isString(rule)) {
                 checker = function checker(name) {
