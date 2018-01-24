@@ -1,6 +1,6 @@
 {
   "name": "@lvchengbin/event-emitter",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An Event Emitter for browsers",
   "keywords": "event emitter trigger",
   "repository": {
@@ -44,6 +44,6 @@
   "author": "LvChengbin",
   "license": "MIT",
   "dependencies": {
-    "@lvchengbin/is": "0.0.1"
+    "@lvchengbin/is": "0.0.7"
   }
 }
