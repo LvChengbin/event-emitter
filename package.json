@@ -1,6 +1,6 @@
 {
   "name": "@lvchengbin/event-emitter",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "An Event Emitter for browsers",
   "keywords": "event emitter trigger",
   "repository": {
@@ -8,10 +8,9 @@
     "url": "git@github.com:LvChengbin/event-emitter.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
     "eslint": "^4.14.0",
     "jasmine-core": "^2.8.0",
     "karma": "^2.0.0",
@@ -24,7 +23,7 @@
     "pre-commit": "^1.2.2",
     "puppeteer": "^0.13.0",
     "rollup": "^0.53.3",
-    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-babel": "^4.0.0-beta.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "run-sequence": "^2.2.0"
   },
@@ -44,6 +43,6 @@
   "author": "LvChengbin",
   "license": "MIT",
   "dependencies": {
-    "@lvchengbin/is": "0.0.7"
+    "@lvchengbin/is": "0.0.9"
   }
 }
