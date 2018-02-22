@@ -1,6 +1,6 @@
 {
   "name": "@lvchengbin/event-emitter",
-  "version": "0.0.10",
+  "version": "0.1.1",
   "description": "An Event Emitter for browsers",
   "keywords": "event emitter trigger",
   "repository": {
@@ -11,8 +11,8 @@
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
-    "eslint": "^4.14.0",
-    "jasmine-core": "^2.8.0",
+    "eslint": "^4.17.0",
+    "jasmine-core": "^2.99.1",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-es6-shim": "^1.0.0",
@@ -21,9 +21,9 @@
     "karma-rollup-preprocessor": "^5.0.2",
     "optimist": "^0.6.1",
     "pre-commit": "^1.2.2",
-    "puppeteer": "^0.13.0",
+    "puppeteer": "^1.0.0",
     "rollup": "^0.53.3",
-    "rollup-plugin-babel": "^4.0.0-beta.0",
+    "rollup-plugin-babel": "^4.0.0-beta.1",
     "rollup-plugin-node-resolve": "^3.0.2",
     "run-sequence": "^2.2.0"
   },

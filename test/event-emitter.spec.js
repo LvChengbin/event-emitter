@@ -1,3 +1,4 @@
+import is from '@lvchengbin/is';
 import EventEmitter from '../src/event-emitter';
 
 describe( 'EventEmitter', () => {
@@ -23,6 +24,16 @@ describe( 'EventEmitter', () => {
         } );
 
         em.$emit( 'abc', 'a', 'b' );
+    } );
+
+    it( 'using an object as the event type', done => {
+        const func = () => {};
+
+        em.$on( func, () => {
+            done();
+        } );
+
+        em.$emit( func );
     } );
 
     it( 'once', () => {
@@ -61,14 +72,12 @@ describe( 'EventEmitter', () => {
         expect( i ).toEqual( 0 );
 
         em.$on( '__x', () => i++ );
-        em.$removeAllListeners( type => type.charAt( 0 ) === '_' );
+        em.$removeAllListeners( type => is.string( type ) && type.charAt( 0 ) === '_' );
         em.$emit( '__x' );
         expect( i ).toEqual( 0 );
 
         em.$on( '__x', () => i++ );
         em.$emit( '__x' );
         expect( i ).toEqual( 1 );
-
     } );
-
 } );

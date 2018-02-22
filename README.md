@@ -43,6 +43,17 @@ new A().on( 'msg', () => {
 } );
 ```
 
+Using an `Object` as the event type.
+
+```js
+const em = new EventEmitter();
+
+const func = {};
+
+em.on( func, () => {
+} );
+```
+
 ## Methods
 
  - **on( evt, handler )**

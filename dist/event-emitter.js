@@ -14,7 +14,7 @@ var isRegExp = reg => ({}).toString.call( reg ) === '[object RegExp]';
 
 class EventEmitter {
     constructor() {
-        this.__listeners = {};
+        this.__listeners = new Map();
     }
 
     alias( name, to ) {
@@ -23,7 +23,14 @@ class EventEmitter {
 
     on( evt, handler ) {
         const listeners = this.__listeners;
-        listeners[ evt ] ? listeners[ evt ].push( handler ) : ( listeners[ evt ] = [ handler ] );
+        let handlers = listeners.get( evt );
+
+        if( handlers ) {
+            handlers.push( handler );
+        } else {
+            handlers = [ handler ];
+            listeners.set( evt, handlers );
+        }
         return this;
     }
 
@@ -36,8 +43,8 @@ class EventEmitter {
     }
 
     removeListener( evt, handler ) {
-        var listeners = this.__listeners,
-            handlers = listeners[ evt ];
+        const listeners = this.__listeners;
+        const handlers = listeners.get( evt );
 
         if( !handlers || ! handlers.length ) {
             return this;
@@ -57,7 +64,7 @@ class EventEmitter {
     }
 
     emit( evt, ...args ) {
-        const handlers = this.__listeners[ evt ];
+        const handlers = this.__listeners.get( evt );
         if( handlers ) {
             for( let i = 0, l = handlers.length; i < l; i += 1 ) {
                 handlers[ i ] && handlers[ i ].call( this, ...args );
@@ -81,12 +88,13 @@ class EventEmitter {
         }
 
         const listeners = this.__listeners;
-        for( let attr in listeners ) {
-            if( checker( attr ) ) {
-                listeners[ attr ] = null;
-                delete listeners[ attr ];
+
+        listeners.forEach( ( value, key ) => {
+            if( checker( key ) ) {
+                listeners.delete( key );
             }
-        }
+        } );
+        return this;
     }
 }
 
