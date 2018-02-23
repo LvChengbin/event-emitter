@@ -1,6 +1,6 @@
 {
   "name": "@lvchengbin/event-emitter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An Event Emitter for browsers",
   "keywords": "event emitter trigger",
   "repository": {

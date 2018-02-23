@@ -8,6 +8,23 @@ var strong = require('./_collection-strong');
 
 var validate = require('./_validate-collection');
 
+var SET = 'Set'; // 23.2 Set Objects
+
+module.exports = require('./_collection')(SET, function (get) {
+  return function Set() {
+    return get(this, arguments.length > 0 ? arguments[0] : undefined);
+  };
+}, {
+  // 23.2.3.1 Set.prototype.add(value)
+  add: function add(value) {
+    return strong.def(validate(this, SET), value = value === 0 ? 0 : value, value);
+  }
+}, strong);
+
+var strong$1 = require('./_collection-strong');
+
+var validate$1 = require('./_validate-collection');
+
 var MAP = 'Map'; // 23.1 Map Objects
 
 module.exports = require('./_collection')(MAP, function (get) {
@@ -17,14 +34,14 @@ module.exports = require('./_collection')(MAP, function (get) {
 }, {
   // 23.1.3.6 Map.prototype.get(key)
   get: function get(key) {
-    var entry = strong.getEntry(validate(this, MAP), key);
+    var entry = strong$1.getEntry(validate$1(this, MAP), key);
     return entry && entry.v;
   },
   // 23.1.3.9 Map.prototype.set(key, value)
   set: function set(key, value) {
-    return strong.def(validate(this, MAP), key === 0 ? 0 : key, value);
+    return strong$1.def(validate$1(this, MAP), key === 0 ? 0 : key, value);
   }
-}, strong, true);
+}, strong$1, true);
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -84,13 +101,12 @@ function () {
       var listeners = this.__listeners;
       var handlers = listeners.get(evt);
 
-      if (handlers) {
-        handlers.push(handler);
-      } else {
-        handlers = [handler];
+      if (!handlers) {
+        handlers = new Set();
         listeners.set(evt, handlers);
       }
 
+      handlers.add(handler);
       return this;
     }
   }, {
@@ -115,42 +131,24 @@ function () {
     value: function removeListener(evt, handler) {
       var listeners = this.__listeners;
       var handlers = listeners.get(evt);
-
-      if (!handlers || !handlers.length) {
-        return this;
-      }
-
-      for (var i = 0; i < handlers.length; i += 1) {
-        handlers[i] === handler && (handlers[i] = null);
-      }
-
-      setTimeout(function () {
-        for (var _i = 0; _i < handlers.length; _i += 1) {
-          handlers[_i] || handlers.splice(_i--, 1);
-        }
-      }, 0);
+      handlers && handlers.delete(handler);
       return this;
     }
   }, {
     key: "emit",
     value: function emit(evt) {
-      var handlers = this.__listeners.get(evt);
+      var _this2 = this;
 
-      if (handlers) {
-        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-          args[_key2 - 1] = arguments[_key2];
-        }
-
-        for (var i = 0, l = handlers.length; i < l; i += 1) {
-          var _handlers$i;
-
-          handlers[i] && (_handlers$i = handlers[i]).call.apply(_handlers$i, [this].concat(args));
-        }
-
-        return true;
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
       }
 
-      return false;
+      var handlers = this.__listeners.get(evt);
+
+      if (!handlers) return false;
+      handlers.forEach(function (handler) {
+        return handler.call.apply(handler, [_this2].concat(args));
+      });
     }
   }, {
     key: "removeAllListeners",
@@ -172,9 +170,7 @@ function () {
 
       var listeners = this.__listeners;
       listeners.forEach(function (value, key) {
-        if (checker(key)) {
-          listeners.delete(key);
-        }
+        checker(key) && listeners.delete(key);
       });
       return this;
     }

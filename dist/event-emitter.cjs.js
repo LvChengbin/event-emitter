@@ -21,12 +21,11 @@ class EventEmitter {
         const listeners = this.__listeners;
         let handlers = listeners.get( evt );
 
-        if( handlers ) {
-            handlers.push( handler );
-        } else {
-            handlers = [ handler ];
+        if( !handlers ) {
+            handlers = new Set();
             listeners.set( evt, handlers );
         }
+        handlers.add( handler );
         return this;
     }
 
@@ -41,33 +40,14 @@ class EventEmitter {
     removeListener( evt, handler ) {
         const listeners = this.__listeners;
         const handlers = listeners.get( evt );
-
-        if( !handlers || ! handlers.length ) {
-            return this;
-        }
-
-        for( let i = 0; i < handlers.length; i += 1 ) {
-            handlers[ i ] === handler && ( handlers[ i ] = null );
-        }
-
-        setTimeout( () => {
-            for( let i = 0; i < handlers.length; i += 1 ) {
-                handlers[ i ] || handlers.splice( i--, 1 );
-            }
-        }, 0 );
-
+        handlers && handlers.delete( handler );
         return this;
     }
 
     emit( evt, ...args ) {
         const handlers = this.__listeners.get( evt );
-        if( handlers ) {
-            for( let i = 0, l = handlers.length; i < l; i += 1 ) {
-                handlers[ i ] && handlers[ i ].call( this, ...args );
-            }
-            return true;
-        }
-        return false;
+        if( !handlers ) return false;
+        handlers.forEach( handler => handler.call( this, ...args ) );
     }
 
     removeAllListeners( rule ) {
@@ -86,9 +66,7 @@ class EventEmitter {
         const listeners = this.__listeners;
 
         listeners.forEach( ( value, key ) => {
-            if( checker( key ) ) {
-                listeners.delete( key );
-            }
+            checker( key ) && listeners.delete( key );
         } );
         return this;
     }
