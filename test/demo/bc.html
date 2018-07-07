@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>EventEmitter</title>
+        <script src="/dist/event-emitter.bc.js"></script>
+    </head>
+    <body>
+        <script>
+            var em = new EventEmitter();
+            em.on( 'test', function( data ) {
+                console.log( data );
+            } );
+            em.emit( 'test', 'abc' );
+        </script>
+        
+    </body>
+</html>

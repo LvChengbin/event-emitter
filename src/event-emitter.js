@@ -1,14 +1,12 @@
+import Map from '@lvchengbin/map';
+import Set from '@lvchengbin/set';
 import isString from '@lvchengbin/is/src/string';
 import isFunction from '@lvchengbin/is/src/function';
 import isRegExp from '@lvchengbin/is/src/regexp';
 
-export default class EventEmitter {
+export default class {
     constructor() {
         this.__listeners = new Map();
-    }
-
-    alias( name, to ) {
-        this[ name ] = this[ to ].bind( this );
     }
 
     on( evt, handler ) {
