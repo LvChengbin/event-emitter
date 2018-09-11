@@ -1,6 +1,6 @@
 # EventEmitter
 
-An implementation of EventEmitter for browsers.
+An implementation of EventEmitter for browsers which can use an Object as the event type.
 
 ## Installation
 
