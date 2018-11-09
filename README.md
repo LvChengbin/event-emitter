@@ -1,5 +1,7 @@
 # EventEmitter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/LvChengbin/event-emitter.svg)](https://greenkeeper.io/)
+
 An implementation of EventEmitter for browsers.
 
 ## Installation
