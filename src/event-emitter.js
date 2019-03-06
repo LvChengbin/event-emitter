@@ -1,5 +1,3 @@
-import Map from '@lvchengbin/map';
-import Set from '@lvchengbin/set';
 import isString from '@lvchengbin/is/src/string';
 import isFunction from '@lvchengbin/is/src/function';
 import isRegExp from '@lvchengbin/is/src/regexp';

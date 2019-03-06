@@ -1,6 +1,6 @@
 {
     "name": "@lvchengbin/event-emitter",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "An Event Emitter for browsers",
     "keywords": "event emitter trigger",
     "repository": {
@@ -8,22 +8,21 @@
         "url": "git@github.com:LvChengbin/event-emitter.git"
     },
     "devDependencies": {
-        "buble": "^0.19.3",
-        "eslint": "^4.17.0",
-        "jasmine-core": "^2.99.1",
-        "karma": "^2.0.0",
+        "buble": "^0.19.6",
+        "eslint": "^5.15.1",
+        "jasmine-core": "^3.3.0",
+        "karma": "^4.0.1",
         "karma-chrome-launcher": "^2.2.0",
-        "karma-jasmine": "^1.1.1",
-        "karma-rollup-preprocessor": "^5.0.2",
-        "karma-yolk-preprocessor": "0.0.2",
+        "karma-jasmine": "^2.0.1",
+        "karma-rollup-preprocessor": "^7.0.0",
         "koa-static": "^5.0.0",
         "optimist": "^0.6.1",
         "pre-commit": "^1.2.2",
-        "puppeteer": "^1.5.0",
-        "rollup": "^0.53.3",
-        "rollup-plugin-buble": "^0.19.2",
-        "rollup-plugin-node-resolve": "^3.0.2",
-        "run-sequence": "^2.2.0"
+        "puppeteer": "^1.13.0-next.1551827100936",
+        "rollup": "^1.4.1",
+        "rollup-plugin-buble": "^0.19.6",
+        "rollup-plugin-node-resolve": "^4.0.1",
+        "run-sequence": "^2.2.1"
     },
     "scripts": {
         "build": "rollup -c",
@@ -42,8 +41,6 @@
     "author": "LvChengbin",
     "license": "MIT",
     "dependencies": {
-        "@lvchengbin/is": "0.0.18",
-        "@lvchengbin/map": "0.0.13",
-        "@lvchengbin/set": "0.0.2"
+        "@lvchengbin/is": "0.0.27"
     }
 }
