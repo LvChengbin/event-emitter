@@ -1,6 +1,6 @@
 {
     "name": "@lvchengbin/event-emitter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An Event Emitter for browsers",
     "keywords": "event emitter trigger",
     "repository": {
@@ -8,17 +8,17 @@
         "url": "git@github.com:LvChengbin/event-emitter.git"
     },
     "devDependencies": {
-        "eslint": "^4.17.0",
-        "jasmine-core": "^2.99.1",
-        "karma": "^2.0.0",
-        "karma-chrome-launcher": "^2.2.0",
-        "karma-jasmine": "^1.1.1",
-        "karma-rollup-preprocessor": "^5.0.2",
+        "eslint": "^6.3.0",
+        "jasmine-core": "^3.4.0",
+        "karma": "^4.3.0",
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-jasmine": "^2.0.1",
+        "karma-rollup-preprocessor": "^7.0.2",
         "optimist": "^0.6.1",
         "pre-commit": "^1.2.2",
-        "puppeteer": "^1.8.0",
-        "rollup": "^0.53.3",
-        "rollup-plugin-node-resolve": "^3.0.2"
+        "puppeteer": "^1.19.0",
+        "rollup": "^1.20.3",
+        "rollup-plugin-node-resolve": "^5.2.0"
     },
     "scripts": {
         "build": "rollup -c",
@@ -36,6 +36,6 @@
     "author": "LvChengbin",
     "license": "MIT",
     "dependencies": {
-        "@lvchengbin/is": "0.0.23"
+        "@lvchengbin/is": "0.0.27"
     }
 }
