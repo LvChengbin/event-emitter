@@ -1,28 +1,46 @@
 {
     "name": "@lvchengbin/event-emitter",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "description": "An event emitter for both browsers and nodejs",
-    "keywords": [ "event", "trigger", "listener" ],
+    "keywords": [
+        "event",
+        "trigger",
+        "listener"
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:LvChengbin/event-emitter.git"
     },
     "devDependencies": {
-        "@types/node": "^14.0.27",
+        "@babel/core": "^7.11.1",
+        "@babel/preset-env": "^7.11.0",
+        "@babel/preset-typescript": "^7.10.4",
         "@typescript-eslint/eslint-plugin": "^3.9.0",
         "@typescript-eslint/parser": "^3.9.0",
         "eslint": "^7.6.0",
+        "husky": "^4.2.5",
         "jest": "^26.3.0",
-        "ts-node": "^8.10.2",
         "typescript": "^3.9.7"
     },
     "scripts": {
-        "build": "tsc --declaration",
+        "clean": "rm -rf dist",
+        "build": "yarn clean && tsc --declaration",
+        "build:watch": "tsc --watch",
         "test": "jest",
-        "prepublish": "yarn build",
+        "test:watch": "jest --watch",
+        "prepublish": "yarn lint && yarn build",
         "lint": "eslint src/**/*.ts --cache --ignore-path .eslintignore"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn lint && yarn test",
+            "pre-push": "yarn lint && yarn test"
+        }
+    },
     "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
     "author": "LvChengbin <lvchengbin59@gmail.com>",
     "license": "MIT"
 }
